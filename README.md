@@ -85,7 +85,7 @@ You can immediately start using this library into your Bash program by
 pasting the following at its beginning:
 
 ```bash
-_bin="$( \
+_bin="$(
   dirname \
     "$( \
       command \
