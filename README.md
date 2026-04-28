@@ -1,10 +1,9 @@
-
 [comment]: <> (SPDX-License-Identifier: AGPL-3.0)
 
-[comment]: <> (----------------------------------------------------)
+[comment]: <> (------------------------------------------------------)
 [comment]: <> (Copyright © 2024, 2025, 2026  Pellegrino Prevete)
 [comment]: <> (All rights reserved)
-[comment]: <> (----------------------------------------------------)
+[comment]: <> (------------------------------------------------------)
 
 [comment]: <> (This program is free software: you can redistribute)
 [comment]: <> (it and/or modify it under the terms of the GNU Affero)
@@ -13,62 +12,55 @@
 
 [comment]: <> (This program is distributed in the hope that it will be)
 [comment]: <> (useful, but WITHOUT ANY WARRANTY; without even the)
-[comment]: <> (implied warranty of MERCHANTABILITY or FITNESS FOR A)
-[comment]: <> (PARTICULAR PURPOSE.)
+[comment]: <> (implied warranty of MERCHANTABILITY or FITNESS FOR)
+[comment]: <> (A PARTICULAR PURPOSE. See the)
+[comment]: <> (See the GNU Affero General Public License for)
+[comment]: <> (more details.)
 
-[comment]: <> (See the GNU Affero General Public License for more)
-[comment]: <> (details. You should have received a copy of the GNU)
-[comment]: <> (Affero License along with this program.)
+[comment]: <> (You should have received a copy of the GNU Affero)
+[comment]: <> (General Public License along with this program.)
 [comment]: <> (If not, see <https://www.gnu.org/licenses/>.)
-[comment]: <> (SPDX-License-Identifier: AGPL-3.0)
 
-# EVM Wallet (`evm-wallet.js`)
+# EVM Smart Contracts Tools
 
-Cryptocurrency wallet for Ethereum Virtual Machine (EVM) compatible
-blockchain networks written in Javascript based on the
-[Ethers](
-  https://github.com/ethers-io/ethers.js) library and part of the
-EVM Toolchain.
+A full-suite collection of useful JavaScript
+programs and libraries to enable seamless development
+of native computer applications designed to interact
+with Ethereum Virtual Machine-compatible networks. 
 
-It depends on
+Particular focus has been put onto giving users the ability
+to seamlessly call publicly verified smart contracts functions
+same as they would do to retrieve information from any other standard
+local program.
+
+In order to do so, the `evm-contract-call` program obtains networks'
+informations from the
 [EVM Chains Info](
   https://github.com/themartiancompany/evm-chains-info)
-and
-[EVM Chains Explorers](
-  https://github.com/themartiancompany/evm-chains-explorers)
-in order to automatically retrieve informations about
-blockchain networks, on
-[key-gen](
-  https://github.com/themartiancompany/key-gen),
-for which it is at the same time a seed-phrase provider,
-to generate secrets,
-and on the
-[Crash Bash](
-  https://github.com/themartiancompany/crash-bash)
-and
-[Crash JavaScript](
-  https://github.com/themartiancompany/crash-js)
-run-time libraries.
+and automatically retrieves eventually missing smart
+contracts artifacts from online sources using the
+[EVM Contracts ABI Get](
+  https://github.com/themartiancompany/evm-contracts-abi-get)
+utility.
 
-It is a dependency for the
-[EVM Contracts Tools](
-  https://github.com/themartiancompany/evm-contracts-tools),
+The `evm-contract-call` program uses the 
+[Ethers](
+  https://github.com/ethers-io/ethers.js)
+JavaScript library to
+communicate with Ethereum Virtual Machine-compatible
+blockchain networks and integrates natively with
+and depends on the
+[EVM Wallet](
+  https://github.com/themartiancompany/evm-wallet),
+but it's also possible to directly provide seeds files.
+
+The tools are a required software dependency for
 [libEVM](
-  https://github.com/themartiancompany/libevm),
-and so all the programs depending on it, such as the
-[EVM OpenPGP KeyServer](
-  https://github.com/themartiancompany/evm-openpgp-keyserver),
-the
-[Ethereum Virtual Machine File System](
-  https://github.com/themartiancompany/evmfs)
-and the uncensorable
-[Ur](
-  https://github.com/themartiancompany/ur)
-Life and DogeOS user repository and application store. 
+  https://github.com/themartiancompany/libevm).
 
 ## Installation
 
-The wallet in this source repo
+The tools in this source repo
 can be installed from source using GNU Make.
 
 ```bash
@@ -76,12 +68,12 @@ make \
   install
 ```
 
-The program has officially published on the
-the uncensorable
+The collection has been officially published
+on the the uncensorable
 [Ur](
   https://github.com/themartiancompany/ur)
 user repository and application store as
-`evm-wallet`.
+`evm-contracts-tools`.
 The source code is published on the
 [Ethereum Virtual Machine File System](
   https://github.com/themartiancompany/evmfs)
@@ -91,50 +83,16 @@ To install it from there just type
 
 ```bash
 ur \
-  evm-wallet
+  evm-contracts-tools
 ```
 
 A censorable HTTP Github mirror of the recipe published there,
 containing a full list of the software dependencies needed to run the
 tools is hosted on
-[evm-wallet-ur](
-  https://github.com/themartiancompany/evm-wallet-ur).
+[evm-contracts-tools-ur](
+  https://github.com/themartiancompany/evm-contracts-tools-ur).
 
-
-
-A censorable binary build for the GNU and Android bases of
-Life and
-[DogeOS](
-  https://github.com/themartiancompany/dogeos),
-also compatible with the Arch Linux distribution,
-the Termux pacman-based environment and Windows
-can be found on the
-[Fur](
-  https://github.com/themartiancompany/fur)
-and it can be installed by typing
-
-```bash
-fur \
-  evm-wallet
-```
-
-Direct links to the binary package can be directly accessed
-through
-[Github](
-https://github.com/themartiancompany/fur/tree/evm-wallet)
-in many ways.
-Check the Fur documentation for more information.
-
-The package has also been published
-on the NPM Registry as `evm-wallet.js`
-and so it can be installed from there by typing
-
-```bash
-npm \
-  install \
-    "evm-wallet.js"
-```
-Be aware the mirrors could go offline any time as Github or NPM and more
+Be aware the mirror could go offline any time as Github and more
 in general all HTTP resources are inherently unstable and censorable.
 
 ## License

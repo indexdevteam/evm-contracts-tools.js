@@ -1,8 +1,8 @@
-{ "name": "evm-wallet.js",
+{ "name": "evm-contracts-tools",
   "version":
-    "0.0.4",
+    "0.0.1",
   "description":
-    "Cryptocurrency wallet for Ethereum Virtual Machine (EVM) compatible blockchain networks written in Javascript, part of the EVM Toolchain, depending on the Ethers library.",
+    "JavaScript programs and libraries to enable seamless development of native computer applications designed to interact with Ethereum Virtual Machine-compatible networks.",
   "funding": {
     "type":
       "patreon",
@@ -10,7 +10,7 @@
       "https://patreon.com/tallero"
   },
   "man": [
-    "./man/evm-wallet.js.1"
+    "./man/evm-contract-call-dynamic.1"
   ],
   "files": [
     "AUTHORS.rst",
@@ -34,16 +34,16 @@
     "ethereum"
   ],
   "homepage":
-    "https://github.com/themartiancompany/evm-wallet",
+    "https://github.com/themartiancompany/evm-contracts-tools",
   "bugs": {
     "url":
-      "https://github.com/themartiancompany/evm-wallet.js/issues"
+      "https://github.com/themartiancompany/evm-contracts-tools/issues"
   },
   "repository": {
     "type":
       "git",
     "url":
-      "git+https://github.com/themartiancompany/evm-wallet.js.git"
+      "git+https://github.com/themartiancompany/evm-contracts-tools.git"
   },
   "license":
     "AGPL-3.0-or-later",
@@ -90,10 +90,12 @@
   "type":
     "commonjs",
   "main":
-    "libevm-wallet",
+    "libevm-contracts-tools",
   "bin":
-    { "evm-wallet.js":
-        "evm-wallet" },
+    { "evm-contract-call-dynamic.js":
+        "lib/evm-contract-call-dynamic",
+      "evm-contract-call-static.js":
+        "lib/evm-contract-call-static" },
   "scripts": {
     "build-fs-worker":
       "npx webpack --mode 'production' --config 'fs-worker.webpack.config.cjs' --stats-error-details",
