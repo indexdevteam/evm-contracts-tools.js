@@ -64,7 +64,7 @@ NPM_FILES=\
   "package.json" \
   "webpack.config.cjs"
 
-all: build-man build-npm
+all: build-man build-npm build-scripts
 
 check: eslint
 
@@ -79,6 +79,15 @@ eslint:
 
 install: install-scripts install-doc install-examples install-man
 
+build-scripts:
+
+	git \
+	  submodule \
+	    update \
+	    --init \
+	      "$(_PROJECT_NPM)/nodejs" || \
+	true
+
 install-scripts:
 
 	$(_INSTALL_DIR) \
@@ -86,14 +95,12 @@ install-scripts:
 	for _file in $(NPM_FILES); do
 	  $(_INSTALL_FILE) \
 	    "$${_file}" \
-	    "$(LIB_DIR)/node/$${_file}"; \
-	done
-	$(_INSTALL_DIR) \
-	  "$(LIB_DIR)/node"
-	for _file in $(NPM_FILES); do
-	  $(_INSTALL_FILE) \
-	    "$${_file}" \
-	    "$(LIB_DIR)/node/$${_file}"; \
+	    "$(LIB_DIR)/nodejs/$${_file}"; \
+	  ln \
+	    -s \
+            "$(PREFIX)/lib/$(_PROJECT_NPM)/nodejs/$${_file}" \
+	    "$(LIB_DIR)/$${_file}" || \
+	  true; \
 	done
 	# ln \
 	#   -s \
@@ -206,4 +213,4 @@ install-man:
 	  "build/man/$(_PROJECT_NPM).1" \
 	  "$(MAN_DIR)/man1/$(_PROJECT_NPM).1"
 
-.PHONY: check build-man build-npm install install-doc install-man install-npm install-scripts shellcheck
+.PHONY: check build-man build-npm build-scripts install install-doc install-man install-npm install-scripts shellcheck
