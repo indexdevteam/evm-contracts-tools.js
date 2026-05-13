@@ -56,6 +56,8 @@ NPM_FILES=\
   "README.md" \
   "COPYING" \
   "AUTHORS.rst" \
+  "evm-contract-call" \
+  "evm-contract-call.webpack.config.cjs" \
   "lib" \
   "libevm-contract-call" \
   "libevm-contract-call.webpack.config.cjs" \
@@ -63,8 +65,7 @@ NPM_FILES=\
   "lib$(_PROJECT_NPM).webpack.config.cjs" \
   "eslint.config.mjs" \
   "fs-worker.webpack.config.cjs" \
-  "package.json" \
-  "webpack.config.cjs"
+  "package.json"
 
 MAN_FILES=\
   evm-contract-bytecode-get \

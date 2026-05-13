@@ -48,6 +48,7 @@ export default defineConfig([
      [ "**/*js,mjs,cjs}",
        `**/evm-contract-call`,
        `**/lib/*`,
+       `**/libevm-contract-call`,
        `**/lib${_project}`
      ],
    plugins:
@@ -74,6 +75,7 @@ export default defineConfig([
      [ "**/*.js",
        `**/evm-contract-call`,
        `**/lib/*`,
+       `**/libevm-contract-call`,
        `**/lib${_project}`
      ],
    languageOptions:
