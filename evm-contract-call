@@ -211,40 +211,56 @@ function
       _get_date_human();
   }
   _wallet_overrides_set();
-  if ( target_command == "" ) {
-    target_command =
-      "get";
+  if ( index_retrieve == "" ) {
+    index_retrieve =
+      "n";
   }
-  _input_type_auto_detect();
-  if ( output_type == "" ) {
-    output_type =
-      "name";
+  if ( retries_max == "" ) {
+    retries_max =
+      "300";
   }
-  if ( retrieval_mode == "" ) {
-    retrieval_mode =
-      "offline";
+  if ( target_network == "" ) {
+    // to be auto-detected
+    target_network =
+      "1";
   }
-  if ( selection_method == "" ) {
-    // TODO:
-    //   remove all references
-    //   to that monster
-    selection_method =
+  if ( rpc_selection == "" ) {
+    rpc_selection =
       "kirsh";
   }
-  if ( api_key == "" ) {
-    api_key =
-      "n";
+  if ( call_type == "" ) {
+    call_type =
+      "static";
   }
-  if ( user_level == "" ) {
-    user_level =
-      "y";
+  _call_auth_auto_detect();
+  if ( call_timeout == "" ) {
+    call_timeout =
+      "300000";
   }
-  if ( networks_all == "" ) {
-    networks_all =
-      "n";
+  if ( measure_unit == "" ) {
+    measure_unit =
+      "ether";
   }
-  _db_paths_auto_detect(
-    target_chain);
+  if ( msg_value == "" ) {
+    msg_value =
+      "0";
+  }
+  // _api_key_auto_detect();
+  if ( contract_address != "" ) {
+    if ( contract_abi == "" ) {
+      contract_abi =
+        _default_artifact_path_get();
+      _artifact_local_auto_detect(
+        "bytecode");
+      _artifact_local_auto_detect(
+        "compiler_output");
+      if ( contract_abi == "" ||
+           _default_artifact_path_get(
+	     "abi") == contract_abi ) {
+        _contract_abi_auto_detect();
+      }
+    }
+  }
 }
 
 function
