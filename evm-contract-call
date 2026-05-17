@@ -42,6 +42,9 @@
 /* global
      target_network:
        writable */
+/* global
+     api_key:
+       writable */
 
 const
   _libcrash =
@@ -87,10 +90,20 @@ const
     require(
       "libevm");
 /* global
+     _libevm_cmdline_parse */
+const
+  _libevm_cmdline_parse =
+    _libevm_module._libevm_cmdline_parse;
+/* global
      _libevm_global_variables */
 const
   _libevm_global_variables =
     _libevm_module._libevm_global_variables;
+/* global
+     _libevm_url_parse */
+const
+  _libevm_url_parse =
+    _libevm_module._libevm_url_parse;
 /* global
      _wallet_overrides_set */
 const
@@ -595,39 +608,59 @@ function
   _url_parse() {
   runtime_environment =
     "browser";
-  target_chain =
+  call_type =
     _argv_url_get(
-      "chain")[
+      "call_type")[
         0];
-  target_command =
+  call_timeout =
     _argv_url_get(
-      "command")[
+      "call_timeout")[
         0];
-  input_type =
+  index_retrieve =
     _argv_url_get(
-      "input_type")[
+      "index_retrieve")[
         0];
-  output_type =
+  price_gas =
     _argv_url_get(
-      "output_type")[
+      "price_gas")[
         0];
-  input_type =
+  measure_unit =
     _argv_url_get(
-      "input_type")[
+      "measure_unit")[
         0];
-  retrieval_mode =
+  msg_value =
     _argv_url_get(
-      "retrieval_mode")[
+      "msg_value")[
         0];
-  user_level =
+  retries_max =
     _argv_url_get(
-      "user_level")[
+      "retries_max")[
         0];
-  db_paths.push(
+  rpc_selection =
     _argv_url_get(
-      "db_path")[
-        0]);
-  selection_method =
+      "rpc_selection")[
+        0];
+  contract_abi =
+    _argv_url_get(
+      "contract_abi")[
+        0];
+  contract_compiler_output =
+    _argv_url_get(
+      "contract_compiler_output")[
+        0];
+  rpc_selection =
+    _argv_url_get(
+      "rpc_selection")[
+        0];
+  for ( _method of _argv_url_get(
+                     "method_args") ) {
+    method_args.push(
+      _method);
+      _argv_url_get(
+        "method_args")[
+          0]);
+  }
+  ielection_method =
     _argv_url_get(
       "selection_method")[
         0];
@@ -671,9 +704,11 @@ if ( _cmdline_check(
      _cmdline_check(
             "evm-contract-call") == true ) {
   _cmdline_parse();
+  _libevm_cmdline_parse();
 }
 else{
   _url_parse();
+  _libevm_url_parse();
 }
 _overrides_set();
 _config_show();
