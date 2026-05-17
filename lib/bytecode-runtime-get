@@ -292,6 +292,7 @@ function
     "                                   the seed phrase.",
     "  <retries-max>                    Maximum number of retries before",
     "                                   failing.",
+    `                                   Default: ${retries_max}`,
     "  <api-key-path>                   Path of the API key for the",
     "                                   contract ABI provider service",
     "  <target-network>                 Network on which the contract",
@@ -364,11 +365,15 @@ function
     }
   );
   if ( contract_address == "" ) {
+    const
+      _msg =
+        "It is required to set a contract address.";
     _msg_error(
-      "It is required to set a contract address.",
+      _msg,
       0);
     quiet =
       "n";
+    _overrides_set();
     _usage(
       1);
   }
