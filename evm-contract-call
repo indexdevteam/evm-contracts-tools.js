@@ -678,15 +678,25 @@ else{
 _overrides_set();
 _config_show();
 app_opts = [
-  target_command,
-  input_type,
-  output_type,
-  retrieval_mode,
-  selection_method,
+  call_type,
+  call_timeout,
+  wallet_name,
+  wallet_path,
+  wallet_password,
+  wallet_seed,
   api_key,
-  networks_all,
-  target_chain,
-  db_paths
+  msg_value,
+  price_gas,
+  measure_unit,
+  retries_max,
+  target_network,
+  rpc_selection,
+  contract_address,
+  contract_abi,
+  contract_bytecode,
+  contract_compiler_output,
+  contract_method,
+  method_args
 ];
 _evm_contract_call_cmdline(
   app_opts);
