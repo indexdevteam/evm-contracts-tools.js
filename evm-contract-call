@@ -30,6 +30,16 @@
 /* eslint-disable
      no-unused-vars */
 
+/* global
+     call_auth:
+       writable */
+/* global
+     msg_value:
+       writable */
+/* global
+     target_network:
+       writable */
+
 const
   _libcrash =
   require(
@@ -69,8 +79,6 @@ const
 const
 _process_exit =
   _libcrash._process_exit;
-
-
 const
   _libevm_module =
     require(
@@ -86,39 +94,24 @@ const
   _wallet_overrides_set =
     _libevm_module._wallet_overrides_set;
 const
-  _libevm_chains_info_module =
+  _libevm_contract_call_module =
     require(
-      "libevm-chains-info");
+      "libevm-contract-call");
 /* global
-     _evm_chains_db_path_get */
+     _default_artifact_path_get */
 const
-  _evm_chains_db_path_get =
-    _libevm_chains_info_module._evm_chains_db_path_get;
+  _default_artifact_path_get =
+    _libevm_contract_call_module._default_artifact_path_get;
 /* global
-     _evm_chains_info_get */
+     _evm_contract_call */
 const
-  _evm_chain_info_get =
-    _libevm_chains_info_module._evm_chain_info_get;
+  _evm_contract_call =
+    _libevm_contract_call_module._evm_contract_call;
 /* global
-     _rpc_backends_get */
+     _call_auth_auto_detect */
 const
-  _rpc_backend_get =
-    _libevm_chains_info_module._rpc_backend_get;
-/* global
-     _evm_chains_info */
-const
-  _evm_chains_info =
-    _libevm_chains_info_module._evm_chains_info;
-/* global
-     _db_paths_auto_detect */
-const
-  _db_paths_auto_detect =
-    _libevm_chains_info_module._db_paths_auto_detect;
-/* global
-     _input_type_auto_detect */
-const
-  _input_type_auto_detect =
-    _libevm_chains_info_module._input_type_auto_detect;
+  _call_auth_auto_detect =
+    _libevm_contract_call_module._db_paths_auto_detect;
 
 function
   _global_variables() {
@@ -141,6 +134,21 @@ function
        call_date:
          writable */
   call_date =
+    "";
+  /* global
+       wallet_name:
+         writable */
+  wallet_name =
+    "";
+  /* global
+       retries_max:
+         writable */
+  retries_max =
+    "";
+  /* global
+       rpc_selection:
+         writable */
+  rpc_selection =
     "";
   /* global
        call_type:
@@ -203,6 +211,7 @@ function
   verbose =
     "";
 }
+
 
 function 
   _overrides_set() {

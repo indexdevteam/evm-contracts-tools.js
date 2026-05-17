@@ -101,6 +101,12 @@ const
   _evm_contract_call_static =
     _evm_contract_call_static_module._evm_contract_call_static;
 
+
+function
+  _default_artifact_path_get() {
+  true;
+}
+
 module.exports = {
   _bytecode_creation_get:
     _bytecode_creation_get,
@@ -108,6 +114,8 @@ module.exports = {
     _bytecode_runtime_get,
   _contract_get:
     _contract_get,
+  _default_artifact_path_get:
+    _default_artifact_path_get,
   _deployer_get:
     _deployer_get,
   _deployer_verify:
