@@ -39,7 +39,7 @@ const
 const
   _bytecode_creation_get_module =
     require(
-      "./lib/bytecode_creation_get");
+      "./lib/bytecode-creation-get");
 /* global
      _bytecode_creation_get */
 const
@@ -48,7 +48,7 @@ const
 const
   _bytecode_runtime_get_module =
     require(
-      "./lib/bytecode_runtime_get");
+      "./lib/bytecode-runtime-get");
 /* global
      _bytecode_runtime_get */
 const
@@ -58,7 +58,7 @@ const
 const
   _contract_get_module =
     require(
-      "./lib/contract_get");
+      "./lib/contract-get");
 /* global
      _contract_get */
 const
@@ -67,7 +67,7 @@ const
 const
   _deployer_get_module =
     require(
-      "./lib/deployer_get");
+      "./lib/deployer-get");
 /* global
      _deployer_get */
 const
@@ -76,7 +76,7 @@ const
 const
   _deployer_verify_module =
     require(
-      "./lib/deployer_verify");
+      "./lib/deployer-verify");
 /* global
      _deployer_verify */
 const
