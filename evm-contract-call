@@ -309,16 +309,31 @@ function
       `${app_name} configuration:`,
       `                Call date:   ${call_date}`,
       `      Runtime environment:   ${runtime_environment}`,
-      `           Target command:   ${target_command}`,
-      `               Input type:   ${input_type}`,
-      `              Output type:   ${output_type}`,
-      `           Retrieval mode:   ${retrieval_mode}`,
-      `      User-level database:   ${user_level}`,
+      `                Call type:   ${call_type}`,
+      `      Call authentication:   ${call_auth}`,
+      `    Credentials options:`,
+      `              Wallet name:   ${wallet_name}`,
+      `           Wallet address:   ${api_key}`,
+      `              Wallet path:   ${wallet_path}`,
+      `          Wallet password:   ${wallet_password}`,
+      `              Wallet seed:   ${wallet_seed}`,
+      `        Network options:`,
+      `           Target network:   ${target_network}`,
+      `              Max retries:   ${retries_max}`,
+      `             Call timeout:   ${call_timeout}`,
       `                  API key:   ${api_key}`,
-      `     RPC selection method:   ${selection_method}`,
-      `             All networks:   ${networks_all}`,
-      `             Target chain:   ${target_chain}`,
-      `           Database paths:   ${db_paths}`,
+      `     RPC selection method:   ${rpc_selection}`,
+      `                Gas price:   ${gas_price}`,
+      `       Contract options:`,
+      `         Contract address:   ${contract_address}`,
+      `             Contract ABI:   ${contract_abi}`,
+      `        Contract bytecode:   ${contract_bytecode}`,
+      ` Contract compiler output:   ${contract_compiler_output}`,
+      `           Call options:`,
+      `            Message value:   ${msg_value}`,
+      `             Measure unit:   ${measure_unit}`,
+      `          Contract method:   ${contract_method}`,
+      `         Method arguments:   ${method_args}`,
     ];
   for ( _line of _text ) {
     _msg_info(
@@ -652,26 +667,16 @@ function
     _argv_url_get(
       "rpc_selection")[
         0];
+  for ( _network of _argv_url_get(
+                     "network") ) {
+    target_networks.push(
+      _network);
+  }
   for ( _method of _argv_url_get(
                      "method_args") ) {
     method_args.push(
       _method);
-      _argv_url_get(
-        "method_args")[
-          0]);
   }
-  ielection_method =
-    _argv_url_get(
-      "selection_method")[
-        0];
-  api_key =
-    _argv_url_get(
-      "api_key")[
-        0];
-  networks_all =
-    _argv_url_get(
-      "networks_all")[
-        0];
   quiet =
     _argv_url_get(
       "quiet");
