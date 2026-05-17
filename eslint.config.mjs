@@ -35,6 +35,7 @@ export default defineConfig([
  {
    ignores: [
      "build/**",
+     "build/fs-worker.js",
      "node_modules/**",
      "eslint.config.js",
      "fs-worker.js",

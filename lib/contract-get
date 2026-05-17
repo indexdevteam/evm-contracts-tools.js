@@ -28,80 +28,135 @@ const
   { ethers } =
     require(
       "ethers");
-_ethers =
-  ethers;
-_contract_factory =
-  _ethers.ContractFactory;
-_base_contract =
-  _ethers.BaseContract;
+const
+  _ethers =
+    ethers;
+const
+  _contract_factory =
+    _ethers.ContractFactory;
+const
+  _base_contract =
+    _ethers.BaseContract;
 const
   _libcrash =
     require(
       "crash-js");
-_cmdline_check =
-  _libcrash._cmdline_check;
-_dirname =
-  _libcrash._dirname;
-_file_read =
-  _libcrash._file_read;
-_json_read =
-  _libcrash._json_read;
-_path_join =
-  _libcrash._path_join;
-_msg_info =
-  _libcrash._msg_info;
-_msg_error =
-  _libcrash._msg_error;
+/* global
+     _file_read */
 const
-  _evm_wallet_get =
-    require(
-      '../evm-wallet/wallet-get');
-_wallet_get =
-  _evm_wallet_get._wallet_get;
+  _cmdline_check =
+    _libcrash._cmdline_check;
+/* global
+     _file_read */
 const
-  _network_provider_module =
+  _dirname =
+    _libcrash._dirname;
+/* global
+     _file_read */
+const
+  _file_read =
+    _libcrash._file_read;
+/* global
+     _json_read */
+const
+  _json_read =
+    _libcrash._json_read;
+/* global
+     _path_join */
+const
+  _path_join =
+    _libcrash._path_join;
+/* global
+     _msg_info */
+const
+  _msg_info =
+    _libcrash._msg_info;
+/* global
+     _msg_error */
+const
+  _msg_error =
+    _libcrash._msg_error;
+const
+  _evm_wallet_module =
     require(
-      '../evm-wallet/network-provider');
-_provider_get =
-  _network_provider_module._provider_get;
+      "evm-wallet.js");
+/* global
+     _wallet_get */
+const
+  _wallet_get =
+    _evm_wallet_module._wallet_get;
+/* global
+     _provider_get */
+const
+  _provider_get =
+    _network_provider_module._provider_get;
 
 
 function
   _global_variables() {
+  /* global
+       app_name:
+         writable */
   app_name =
     "contract-get"
+  /* global
+       wallet_seed:
+         writable */
   wallet_seed =
     "";
+  /* global
+       wallet_password_path:
+         writable */
   wallet_password_path =
     "";
+  /* global
+       contract_address:
+         writable */
   contract_address =
     "";
+  /* global
+       contract_abi_path:
+         writable */
   contract_abi_path =
     "";
+  /* global
+       contract_bytecode_path:
+         writable */
   contract_bytecode_path =
     "";
+  /* global
+       contract_compiler_output_path:
+         writable */
   contract_compiler_output_path =
     "";
+  /* global
+       target_network:
+         writable */
   target_network =
     "";
+  /* global
+       api_key_path:
+         writable */
   api_key_path =
     "";
+  /* global
+       quiet:
+         writable */
   quiet =
     "";
 }
 
 function
   _msg_error_no_input_data() {
-  let
-    _msg,
-    _text;
-  _text = [
-    "You need to provide either",
-    "the bytecode or the data"
-  ];
-  _msg =
-    _text.join(
-      " ");
+  const
+    _text = [
+      "You need to provide either",
+      "the bytecode or the data"
+    ];
+  const
+    _msg =
+      _text.join(
+        " ");
   _msg_error(
     _msg,
     1);
@@ -110,15 +165,9 @@ function
 function
   _msg_info_wallet_selected(
     _wallet) {
-  let
-    _msg,
-    _template;
-  _template =
-    "Wallet is '{_wallet}'.";
-  _msg =
-    _template.replaceAll(
-      "{_wallet}",
-      _wallet);
+  const
+    _msg =
+      `Wallet is '${_wallet}'.`;
   _msg_info(
     _msg);
 }
@@ -128,18 +177,17 @@ async function
     _wallet,
     _contract_address,
     _contract_abi_path) {
-  let
-    _contract,
-    _contract_abi;
-  _contract_abi =
-    _json_read(
-      _contract_abi_path);
-  _contract = new
-    _base_contract(
-      _contract_address,
-      _contract_abi,
-      runner =
-        _wallet);
+  const
+    _contract_abi =
+      _json_read(
+        _contract_abi_path);
+  const
+    _contract = new
+      _base_contract(
+        _contract_address,
+        _contract_abi,
+        runner =
+          _wallet);
   return _contract;
 }
 
@@ -153,7 +201,7 @@ async function
     _contract,
     _contract_abi,
     _contract_bytecode,
-    _factory;
+    _msg;
   if ( _contract_abi_path == "" ) {
     _contract_abi = [];
   }
@@ -167,11 +215,12 @@ async function
       _file_read(
         _contract_bytecode_path);
   }
-  _factory =
-    new _contract_factory(
-      _contract_abi,
-      _contract_bytecode,
-      _wallet);
+  const
+    _factory =
+      new _contract_factory(
+        _contract_abi,
+        _contract_bytecode,
+        _wallet);
   if ( _contract_address != "" ) {
     _contract =
       _factory.attach(
@@ -182,8 +231,14 @@ async function
       _contract =
         _factory.getDeployTransaction();
     } catch (e) {
+      const
+        _msg =
+          `Encountered the above error.`;
       console.error(
         e);
+      _msg_error(
+        _msg,
+        0);
     }
   }
   return _contract;
@@ -195,16 +250,16 @@ async function
     _contract_address,
     _contract_compiler_output_path) {
   let
-    _contract,
-    _contract_compiler_output,
-    _factory;
-  _contract_compiler_output =
-    _file_read(
-      _contract_compiler_output_path);
-  _factory =
-    _contract_factory.fromSolidity(
-      _contract_compiler_output,
-      _wallet);
+    _contract;
+  const
+    _contract_compiler_output =
+      _file_read(
+        _contract_compiler_output_path);
+  const
+    _factory =
+      _contract_factory.fromSolidity(
+        _contract_compiler_output,
+        _wallet);
   if ( _contract_address != "" ) {
     _contract =
       _factory.attach(
@@ -216,7 +271,6 @@ async function
   }
   return _contract;
 }
-
 
 async function
   _contract_get(
