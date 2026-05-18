@@ -37,9 +37,14 @@
 /* global 
      api_key */
 /* global
-     target_network */
+     contract_abi */
 /* global
      contract_address */
+/* global
+     contract_compiler_output */
+/* global
+     target_network:
+       writable */
 /* global
      target_networks */
 
@@ -65,12 +70,6 @@ _file_exists =
      no-global-assign */
 _homedir_get =
   _libcrash_module._homedir_get;
-/* global
-     _file_exists */
-/* eslint-disable-next-line
-     no-global-assign */
-_file_exists =
-  _libcrash_module._file_exists;
 /* global
      _json_read */
 /* eslint-disable-next-line
