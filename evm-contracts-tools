@@ -87,19 +87,24 @@ const
     require(
       "./lib/evm-contract-call-dynamic");
 /* global
-     _evm_contract_call_dynamic */
+     _contract_call_dynamic */
 const
-  _evm_contract_call_dynamic =
-    _evm_contract_call_dynamic_module._evm_contract_call_dynamic;
+  _contract_call_dynamic =
+    _evm_contract_call_dynamic_module._contract_call_dynamic;
+/* global
+     _contract_run */
+const
+  _contract_run =
+    _evm_contract_call_dynamic_module._contract_run;
 const
   _evm_contract_call_static_module =
     require(
       "./lib/evm-contract-call-static");
 /* global
-     _evm_contract_call_static */
+     _contract_call_static */
 const
-  _evm_contract_call_static =
-    _evm_contract_call_static_module._evm_contract_call_static;
+  _contract_call_static =
+    _evm_contract_call_static_module._contract_call_static;
 
 
 function
@@ -120,16 +125,18 @@ module.exports = {
     _bytecode_creation_get,
   _bytecode_runtime_get:
     _bytecode_runtime_get,
+  _contract_call_dynamic:
+    _contract_call_dynamic,
+  _contract_call_static:
+    _contract_call_static,
   _contract_get:
     _contract_get,
+  _contract_run:
+    _contract_run,
   _default_artifact_path_get:
     _default_artifact_path_get,
   _deployer_get:
     _deployer_get,
   _deployer_verify:
     _deployer_verify,
-  _evm_contract_call_dynamic:
-    _evm_contract_call_dynamic,
-  _evm_contract_call_static:
-    _evm_contract_call_static,
 };
