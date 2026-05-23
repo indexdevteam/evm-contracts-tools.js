@@ -31,30 +31,35 @@ const
   _project =
     "evm-contracts-tools";
 
+const
+  _ignores = [
+    "build/**",
+    "dist/**",
+    "node_modules/**",
+    "eslint.config.js",
+    "evm-contract-call.js",
+    "fs-worker.js",
+    "libevm-contract-call.js",
+    "libevm-contracts-tools.js",
+    "man/**"
+  ];
+
 export default defineConfig([
  {
-   ignores: [
-     "build/**",
-     "node_modules/**",
-     "eslint.config.js",
-     "evm-contract-call.js",
-     "fs-worker.js",
-     "libevm-contract-call.js",
-     "libevm-contracts-tools.js",
-     "man/**"
-   ],
+   ignores:
+     _ignores,
    rules:
      { semi:
          "error",
        "prefer-const":
          "error" },
-   files:
-     [ "**/*js,mjs,cjs}",
-       `**/evm-contract-call`,
-       `**/lib/*`,
-       `**/libevm-contract-call`,
-       `**/lib${_project}`
-     ],
+   files: [
+    "**/*.{js,mjs,cjs}",
+    `**/evm-contract-call`,
+    `**/lib/*`,
+    `**/libevm-contract-call`,
+    `**/lib${_project}`
+   ],
    plugins:
      { js },
    extends:
@@ -64,28 +69,20 @@ export default defineConfig([
          {  ...globals.browser,
             ...globals.node } } },
  { 
-   ignores: [
-     "build/**",
-     "eslint.config.js",
-     "evm-contract-call.js",
-     "fs-worker.js",
-     "libevm-contract-call.js",
-     "libevm-contracts-tools.js",
-     "node_modules/**",
-     "man/**"
-   ],
+   ignores:
+     _ignores,
    rules:
      { semi:
          "error",
        "prefer-const":
          "error" },
-   files:
-     [ "**/*.js",
-       `**/evm-contract-call`,
-       `**/lib/*`,
-       `**/libevm-contract-call`,
-       `**/lib${_project}`
-     ],
+   files: [
+    "**/*.js",
+    `**/evm-contract-call`,
+    `**/lib/*`,
+    `**/libevm-contract-call`,
+    `**/lib${_project}`
+   ],
    languageOptions:
      { sourceType:
          "commonjs" } },
