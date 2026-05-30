@@ -142,6 +142,11 @@ const
   _artifact_local_auto_detect =
     _libevm_contract_call_module._artifact_local_auto_detect;
 /* global
+     _contract_address_check */
+const
+  _contract_address_check =
+    _libevm_contract_call_module._contract_address_check;
+/* global
      _default_artifact_path_get */
 const
   _default_artifact_path_get =
@@ -260,7 +265,7 @@ function
 
 async function 
   _overrides_set() {
-  console.log("cant you really read", quiet);
+  _contract_address_check();
   if ( call_date == "" ||
        typeof(
          call_date) == "undefined" ) {
@@ -317,12 +322,10 @@ async function
       }
     }
   }
-  console.log("this resets it", quiet);
   await _wallet_overrides_set(
     "evm-wallet",
     wallet_name,
     call_auth);
-  console.log("hello", quiet);
 }
 
 function
@@ -360,9 +363,6 @@ function
       `          Contract method:   ${contract_method}`,
       `         Method arguments:   ${method_args}`,
     ];
-  console.log(
-    "Hellooo");
-  console.log(quiet);
   for ( _line of _text ) {
     _msg_info(
       _line);
@@ -703,7 +703,6 @@ async function
     quiet =
       "n";
   }
-  console.log("quiet", quiet);
 }
 
 function
@@ -808,13 +807,9 @@ async function
 
 async function
   _main() {
-  console.log("quiet", quiet);
   const
     _overrides_set_up =
       await _overrides_set();
-  console.log("now its reset", quiet);
-  console.log(quiet);
-  console.log(call_date);
   _config_show();
   app_opts = [
     call_type,

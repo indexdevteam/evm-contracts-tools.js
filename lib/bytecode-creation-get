@@ -28,21 +28,36 @@ const
   _libcrash =
     require(
       "crash-js");
+/* global
+     _cmdline_check */
 const
   _cmdline_check =
     _libcrash._cmdline_check;
+/* global
+     _error_display */
 const
   _error_display =
     _libcrash._error_display;
+/* global
+     _msg_info */
 const
   _msg_info =
     _libcrash._msg_info;
+/* global
+     _msg_error */
 const
   _msg_error =
     _libcrash._msg_error;
+/* global
+     _printf */
 const
   _printf =
     _libcrash._printf;
+/* global
+     _process_exit */
+const
+  _process_exit =
+    _libcrash._process_exit;
 const
   { ethers } =
     require(
@@ -50,6 +65,8 @@ const
 const
   _ethers =
     ethers;
+/* global
+     _wei_to_ether */
 const
   _wei_to_ether =
     _ethers.formatEther;
@@ -57,9 +74,13 @@ const
   _evm_transactions_tools_module =
     require(
       "evm-transactions-tools");
+/* global
+     _transaction_get */
 const
   _transaction_get =
     _evm_transactions_tools_module._transaction_get;
+/* global
+     _transaction_receipt_get */
 const
   _transaction_receipt_get =
     _evm_transactions_tools_module._transaction_receipt_get;
@@ -67,6 +88,8 @@ const
   _deployer_get_module =
     require(
       './deployer-get');
+/* global
+     _deployer_get */
 const
   _deployer_get =
     _deployer_get_module._deployer_get;
@@ -327,7 +350,7 @@ function
     _msg_info(
       _line);
   }
-  process.exit(
+  _process_exit(
     _exit);
 }
 
