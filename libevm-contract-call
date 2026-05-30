@@ -33,15 +33,27 @@
 /* eslint-disable
      no-useless-assignment */
 
+/* EVM Contracts tools global variables */
+/* global
+     call_type */
+/* global
+     call_auth:
+       writable */
+
 /* libEVM global variables */
 /* global 
      api_key */
 /* global
-     contract_abi */
+     contract_abi:
+       writable */
 /* global
      contract_address */
 /* global
-     contract_compiler_output */
+     contract_bytecode:
+       writable */
+/* global
+     contract_compiler_output:
+       writable */
 /* global
      target_network:
        writable */

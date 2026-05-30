@@ -30,6 +30,12 @@
 /* eslint-disable
      no-unused-vars */
 
+/* Crash Javascript global variables */
+/* global
+     quiet:
+       writable */
+
+/* LibEVM global variables */
 /* global
      call_auth:
        writable */
@@ -44,6 +50,9 @@
        writable */
 /* global
      target_networks:
+       writable */
+/* global
+     quiet:
        writable */
 /* global
      api_key:
@@ -95,7 +104,7 @@ const
 /* global
      _printf */
 const
-_prinf =
+_printf =
   _libcrash._printf;
 /* global
      _process_exit */
@@ -243,9 +252,6 @@ function
          writable */
   measure_unit =
     "";
-  /* global
-       quiet:
-         writable */
   quiet =
     "";
   /* global
@@ -257,7 +263,10 @@ function
 
 async function 
   _overrides_set() {
-  if ( call_date == "" ) {
+  console.log("cant you really read", quiet);
+  if ( call_date == "" ||
+       typeof(
+         call_date) == "undefined" ) {
     call_date =
       _get_date_human();
   }
@@ -311,10 +320,12 @@ async function
       }
     }
   }
+  console.log("this resets it", quiet);
   await _wallet_overrides_set(
     "evm-wallet",
     wallet_name,
     call_auth);
+  console.log("hello", quiet);
 }
 
 function
@@ -352,6 +363,9 @@ function
       `          Contract method:   ${contract_method}`,
       `         Method arguments:   ${method_args}`,
     ];
+  console.log(
+    "Hellooo");
+  console.log(quiet);
   for ( _line of _text ) {
     _msg_info(
       _line);
@@ -685,18 +699,14 @@ async function
   }
   _libevm_cmdline_parse(
     _argv);
-  if ( "v" in _argv ) {
-    verbose =
-      true;
-  }
-  if ( "verbose" in _argv ) {
-    verbose =
-      true;
-  }
-  if ( verbose ) {
+  if ( _argv[
+         "v"] ||
+       _argv[
+         "verbose"] ) {
     quiet =
       "n";
   }
+  console.log("quiet", quiet);
 }
 
 function
@@ -801,7 +811,13 @@ async function
 
 async function
   _main() {
-  await _overrides_set();
+  console.log("quiet", quiet);
+  const
+    _overrides_set_up =
+      await _overrides_set();
+  console.log("now its reset", quiet);
+  console.log(quiet);
+  console.log(call_date);
   _config_show();
   app_opts = [
     call_type,
@@ -835,6 +851,7 @@ if ( _cmdline_check(
      _cmdline_check(
        "evm-contract-call") == true ) {
   _cmdline_parse();
+  console.log("quiet", quiet);
 }
 else{
   _url_parse();
