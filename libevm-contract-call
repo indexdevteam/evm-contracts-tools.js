@@ -276,15 +276,20 @@ function
     _method_args) {
   let
     _explorer,
+    _out,
     _result,
     _rpc;
   if ( _call_type == "static" ) {
     const
       _infos =
         [];
+    _out =
+      "";
+
   }
   else if ( _call_type == "dynamic" ) {
-    true;
+    _out =
+      "";
   }
   else {
     const
@@ -295,6 +300,7 @@ function
       _msg,
       1);
   }
+  return _out;
 }
 
 function

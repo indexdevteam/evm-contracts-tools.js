@@ -93,6 +93,11 @@ const
   _msg_error =
     _libcrash._msg_error;
 /* global
+     _printf */
+const
+_prinf =
+  _libcrash._printf;
+/* global
      _process_exit */
 const
 _process_exit =
@@ -778,10 +783,20 @@ async function
       await _evm_contract_call.apply(
         null,
         app_opts);
-  // for ( _result of _results ) {
-  //   console.log(
-  //     _result);
-  // }
+  const
+    _results_type =
+      typeof(
+        _results);
+  if ( _results_type == "object" ) {
+    for ( _result of _results ) {
+      console.log(
+        _result);
+    }
+  }
+  else if ( _results_type == "string" ) {
+    _printf(
+      _results);
+  }
 }
 
 async function
@@ -825,4 +840,4 @@ else{
   _url_parse();
   _libevm_url_parse();
 }
-// _main();
+_main();
