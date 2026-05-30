@@ -258,7 +258,14 @@ function
   }
 }
 
+function
+  _artifact_local_auto_detect() {
+  true;
+}
+
 module.exports = {
+  _artifact_local_auto_detect:
+    _artifact_local_auto_detect,
   _call_auth_auto_detect:
     _call_auth_auto_detect,
   _contract_abi_auto_detect:

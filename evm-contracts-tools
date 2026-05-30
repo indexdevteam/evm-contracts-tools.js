@@ -107,10 +107,6 @@ const
     _evm_contract_call_static_module._contract_call_static;
 
 
-function
-  _default_artifact_path_get() {
-  true;
-}
 
 
 function
@@ -135,8 +131,6 @@ module.exports = {
     _contract_get,
   _contract_run:
     _contract_run,
-  _default_artifact_path_get:
-    _default_artifact_path_get,
   _deployer_get:
     _deployer_get,
   _deployer_verify:
