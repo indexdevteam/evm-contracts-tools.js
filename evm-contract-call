@@ -149,7 +149,7 @@ const
      _call_auth_auto_detect */
 const
   _call_auth_auto_detect =
-    _libevm_contract_call_module._db_paths_auto_detect;
+    _libevm_contract_call_module._call_auth_auto_detect;
 
 function
   _global_variables() {
