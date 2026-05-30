@@ -56,6 +56,7 @@ NPM_FILES=\
   "README.md" \
   "COPYING" \
   "AUTHORS.rst" \
+  "Makefile" \
   "dist" \
   "evm-contract-call" \
   "evm-contract-call.webpack.config.cjs" \

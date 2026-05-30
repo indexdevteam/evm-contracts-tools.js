@@ -20,6 +20,7 @@
   "files": [
     "AUTHORS.rst",
     "COPYING",
+    "Makefile",
     "README.md",
     "dist",
     "evm-contract-call",
@@ -126,12 +127,14 @@
       "npx webpack --mode 'production' --config 'libevm-contract-call.webpack.config.cjs' --stats-error-details && mv 'libevm-contract-call.js' 'dist/libevm-contract-call'",
     "build-bin":
       "npx webpack --mode 'production' --config 'evm-contract-call.webpack.config.cjs' --stats-error-details && mv 'evm-contract-call.js' 'dist/evm-contract-call' && npx webpack --mode 'production' --config 'webpack.config.cjs' --stats-error-details && mv 'evm-contracts-tools.js' 'dist/evm-contracts-tools'",
+    "build-man":
+      "make build-man",
     "build":
-      "npm run lint && npm run build-fs-worker && npm run build-lib",
+      "npm run lint && npm run build-fs-worker && npm run build-lib && npm run build-bin",
     "lint":
       "npx eslint .",
-    "publish-pnm":
-      "npm run build && npm publish --access public",
+    "publish-npm":
+      "npm run build-man && npm run build && npm publish --access public",
     "start":
       "npx safely-serve --help # index.html --port 3000 --https --no-cache",
     "test":
